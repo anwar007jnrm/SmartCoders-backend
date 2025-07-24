@@ -8,6 +8,7 @@ import com.lloyds.onboard.exception.ServiceException;
 import com.lloyds.onboard.model.Constants;
 import com.lloyds.onboard.model.OtpRequest;
 import com.lloyds.onboard.repository.ApplicationRepository;
+import com.lloyds.onboard.repository.RMMappingsRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -28,9 +29,11 @@ public class ApplicationService {
 
     private final ApplicationRepository repo;
     private final OtpService otpService;
+    private final RMMappingsRepository rmMappingsRepository;
 
     @Value("${encryption.key}")
     private String secretKey;
+
 
     /**
      * Constructs an ApplicationService with the specified repository and OTP service.
@@ -38,9 +41,10 @@ public class ApplicationService {
      * @param repo       the repository for accessing Application entities
      * @param otpService the service for generating OTPs
      */
-    public ApplicationService(ApplicationRepository repo, OtpService otpService) {
+    public ApplicationService(ApplicationRepository repo, OtpService otpService, RMMappingsRepository rmMappingsRepository) {
         this.repo = repo;
         this.otpService = otpService;
+        this.rmMappingsRepository = rmMappingsRepository;
     }
 
     /**
@@ -84,6 +88,7 @@ public class ApplicationService {
      * @return the created {@link Application} entity
      */
     public Application createApplication(Application app) {
+        app.setRmid(rmMappingsRepository.findRmidByPincodeAndJourneytype(app.getPostalcode(),app.getJourneytype()));
         return repo.save(app);
     }
 

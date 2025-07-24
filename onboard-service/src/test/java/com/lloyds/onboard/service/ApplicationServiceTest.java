@@ -5,6 +5,7 @@ import com.lloyds.onboard.Util.MaskUtil;
 import com.lloyds.onboard.entity.Application;
 import com.lloyds.onboard.entity.ResumeApplication;
 import com.lloyds.onboard.repository.ApplicationRepository;
+import com.lloyds.onboard.repository.RMMappingsRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,8 +34,14 @@ class ApplicationServiceTest {
     @Mock
     private OtpService otpService;
 
+    @Mock
+    private RMMappingsRepository rmMappingsRepository;
+
+
+
     @InjectMocks
     private ApplicationService service;
+
 
     @BeforeEach
     void setup() {
@@ -78,6 +85,8 @@ class ApplicationServiceTest {
     @Test
     void shouldCreateApplication() {
         Application app = new Application();
+        app.setJourneytype("PCA");
+        app.setPostalcode("500090");
         when(repository.save(app)).thenReturn(app);
 
         Application result = service.createApplication(app);
