@@ -51,7 +51,7 @@ INSERT INTO rmmapping (rmid, rmname, pincode, journeytype)
 VALUES
     ('rahul', 'Rahul kumar', '500090', 'Insurance'),
     ('nikhil', 'nikhil ', '500090', 'AccountOpening'),
-    ('anwar', 'Anwar sk', '500090', 'Loan'),
+    ('anwar', 'Anwar sk', '500090', 'PCA'),
     ('arpit', 'arpit', '500091', 'Loan'),
     ('bharat', 'Bharat', '500091', 'Insurance'),
     ('Abhedya', 'Abhedya Ayush ', '500091', 'AccountOpening');
