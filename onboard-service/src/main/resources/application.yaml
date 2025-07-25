@@ -13,10 +13,10 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: nikilesh.nikil333@gmail.com
-#    username: smartcoders.ltc@gmail.com
-#    password: ksdwruwfpnbnrrkj
-    password: guwdarzexekoovxx
+    #username: nikilesh.nikil333@gmail.com
+    username: smartcoders.ltc@gmail.com
+    password: ksdwruwfpnbnrrkj
+#    password: guwdarzexekoovxx
     properties:
       mail:
         smtp:
@@ -48,7 +48,7 @@ encryption:
 
 
 resume-journey:
-  url: "http://localhost:3000/resumeJourney?token="
+  url: "http://35.244.8.242/resumeJourney?token="
 
 error-config:
   error-details:
